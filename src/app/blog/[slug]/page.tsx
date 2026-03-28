@@ -55,10 +55,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       </nav>
 
       <article>
-        <header className="mb-8">
+        <header className="mb-10 pb-8 border-b border-orange-100">
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">{post.title}</h1>
           <p className="text-gray-500 text-lg mb-4">{post.excerpt}</p>
-          <div className="flex items-center gap-3 text-sm text-gray-400">
+          <div className="flex items-center gap-3 text-sm text-gray-500">
             <span>{formatDate(post.date)}</span>
             <span>•</span>
             <span>{post.readTime} min de lecture</span>
@@ -66,26 +66,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </header>
 
         <div
-          className="
-            prose max-w-none
-            prose-headings:text-gray-900 prose-headings:font-bold
-            prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
-            prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
-            prose-p:text-gray-600 prose-p:leading-relaxed prose-p:mb-4
-            prose-strong:text-gray-900
-            prose-li:text-gray-600
-            prose-ul:my-4 prose-ol:my-4
-            prose-table:text-sm prose-table:my-6
-            prose-th:text-gray-700 prose-th:bg-orange-50/50 prose-th:border-orange-100 prose-th:py-2.5 prose-th:px-3 prose-th:text-left prose-th:font-semibold
-            prose-td:border-orange-100 prose-td:py-2 prose-td:px-3
-            prose-tr:border-b prose-tr:border-orange-50
-            prose-a:text-orange-600 prose-a:no-underline hover:prose-a:underline
-          "
+          className="blog-content"
           dangerouslySetInnerHTML={{ __html: markdownToHtml(post.content) }}
         />
       </article>
 
-      {/* Article FAQ */}
       {post.faq && post.faq.length > 0 && (
         <FAQ items={post.faq} />
       )}
@@ -127,19 +112,21 @@ function markdownToHtml(md: string): string {
   let inList = false;
   let inTable = false;
   let tableHeader = '';
-  let tableSep = '';
   let tableRows: string[] = [];
 
   function flushTable() {
     if (!tableHeader) return;
-    const headerCells = tableHeader.split('|').filter(c => c.trim()).map(c => `<th>${applyInline(c.trim())}</th>`).join('');
-    const rows = tableRows.map(row => {
-      const cells = row.split('|').filter(c => c.trim()).map(c => `<td>${applyInline(c.trim())}</td>`).join('');
-      return `<tr>${cells}</tr>`;
+    const headerCells = tableHeader.split('|').filter(c => c.trim()).map(c =>
+      `<th style="padding:10px 14px;text-align:left;font-weight:600;color:#374151;background:#fff7ed;border-bottom:2px solid #fed7aa;font-size:13px;">${inline(c.trim())}</th>`
+    ).join('');
+    const rows = tableRows.map((row, idx) => {
+      const cells = row.split('|').filter(c => c.trim()).map(c =>
+        `<td style="padding:10px 14px;border-bottom:1px solid #ffedd5;color:#4b5563;font-size:14px;">${inline(c.trim())}</td>`
+      ).join('');
+      return `<tr style="background:${idx % 2 === 0 ? '#ffffff' : '#fffbf5'}">${cells}</tr>`;
     }).join('');
-    output.push(`<div class="overflow-x-auto"><table><thead><tr>${headerCells}</tr></thead><tbody>${rows}</tbody></table></div>`);
+    output.push(`<div style="overflow-x:auto;margin:24px 0;border-radius:12px;border:1px solid #fed7aa;"><table style="width:100%;border-collapse:collapse;"><thead><tr>${headerCells}</tr></thead><tbody>${rows}</tbody></table></div>`);
     tableHeader = '';
-    tableSep = '';
     tableRows = [];
     inTable = false;
   }
@@ -151,85 +138,82 @@ function markdownToHtml(md: string): string {
     }
   }
 
-  function applyInline(text: string): string {
-    return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+  function inline(text: string): string {
+    return text.replace(/\*\*(.*?)\*\*/g, '<strong style="color:#111827;font-weight:600;">$1</strong>');
   }
 
   for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-    const trimmed = line.trim();
+    const trimmed = lines[i].trim();
 
-    // Table detection: a pipe line followed by a separator line
+    // Table start
     if (!inTable && trimmed.startsWith('|') && trimmed.endsWith('|')) {
       const nextLine = i + 1 < lines.length ? lines[i + 1].trim() : '';
       if (/^\|[-| :]+\|$/.test(nextLine)) {
         closeList();
         inTable = true;
         tableHeader = trimmed;
-        tableSep = nextLine;
-        i++; // skip separator
+        i++;
         continue;
       }
     }
 
-    // Table body rows
+    // Table rows
     if (inTable) {
       if (trimmed.startsWith('|') && trimmed.endsWith('|')) {
         tableRows.push(trimmed);
         continue;
       } else {
         flushTable();
-        // fall through to process current line normally
       }
     }
 
-    // Empty line
+    // Empty
     if (trimmed === '') {
       closeList();
       continue;
     }
 
-    // Headers
-    if (trimmed.startsWith('### ')) {
-      closeList();
-      output.push(`<h3>${applyInline(trimmed.slice(4))}</h3>`);
-      continue;
-    }
+    // H2
     if (trimmed.startsWith('## ')) {
       closeList();
-      output.push(`<h2>${applyInline(trimmed.slice(3))}</h2>`);
+      output.push(`<h2 style="font-size:1.5rem;font-weight:700;color:#111827;margin-top:48px;margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid #ffedd5;">${inline(trimmed.slice(3))}</h2>`);
       continue;
     }
 
-    // Unordered list items
+    // H3
+    if (trimmed.startsWith('### ')) {
+      closeList();
+      output.push(`<h3 style="font-size:1.2rem;font-weight:600;color:#1f2937;margin-top:32px;margin-bottom:12px;">${inline(trimmed.slice(4))}</h3>`);
+      continue;
+    }
+
+    // List item
     if (trimmed.startsWith('- ')) {
       if (!inList) {
-        output.push('<ul>');
+        output.push('<ul style="margin:16px 0;padding-left:0;list-style:none;">');
         inList = true;
       }
-      output.push(`<li>${applyInline(trimmed.slice(2))}</li>`);
+      output.push(`<li style="padding:6px 0 6px 24px;position:relative;color:#4b5563;font-size:15px;line-height:1.7;"><span style="position:absolute;left:0;color:#ea580c;font-weight:bold;">•</span>${inline(trimmed.slice(2))}</li>`);
       continue;
     }
 
-    // Ordered list items (render as ul to match original behavior)
-    const olMatch = trimmed.match(/^\d+\.\s+(.*)/);
+    // Ordered list
+    const olMatch = trimmed.match(/^(\d+)\.\s+(.*)/);
     if (olMatch) {
       if (!inList) {
-        output.push('<ul>');
+        output.push('<ul style="margin:16px 0;padding-left:0;list-style:none;counter-reset:li;">');
         inList = true;
       }
-      output.push(`<li>${applyInline(olMatch[1])}</li>`);
+      output.push(`<li style="padding:6px 0 6px 32px;position:relative;color:#4b5563;font-size:15px;line-height:1.7;"><span style="position:absolute;left:0;color:#ea580c;font-weight:700;font-size:14px;">${olMatch[1]}.</span>${inline(olMatch[2])}</li>`);
       continue;
     }
 
     // Paragraph
     closeList();
-    output.push(`<p>${applyInline(trimmed)}</p>`);
+    output.push(`<p style="margin-bottom:16px;color:#4b5563;font-size:15px;line-height:1.8;">${inline(trimmed)}</p>`);
   }
 
-  // Flush remaining state
   closeList();
   flushTable();
-
   return output.join('\n');
 }
