@@ -2,7 +2,9 @@
 
 The leading French-language comparison platform for no-deposit casino bonuses. Built for SEO performance, conversion optimization, and user trust.
 
-**Live target**: [casinojeugratuit.com](https://casinojeugratuit.com)
+**Live**: [casinojeugratuit.vercel.app](https://casinojeugratuit.vercel.app)
+**Target domain**: [casinojeugratuit.com](https://casinojeugratuit.com)
+**GitHub**: [Tomaya8/casinojeugratuit](https://github.com/Tomaya8/casinojeugratuit)
 
 ## Tech Stack
 
@@ -10,10 +12,12 @@ The leading French-language comparison platform for no-deposit casino bonuses. B
 |-------|-----------|
 | Framework | Next.js 16.2 (App Router, Turbopack) |
 | Language | TypeScript |
-| Styling | Tailwind CSS v4 |
+| Styling | Tailwind CSS v4 + @tailwindcss/typography |
 | Rendering | Static Site Generation (SSG) |
 | Runtime | React 19 |
-| Deployment | Vercel (recommended) |
+| Database | Firebase Firestore (email collection, contact forms) |
+| Hosting | Vercel (auto-deploy from GitHub) |
+| Images | Unsplash (optimized via next/image) |
 
 ## Quick Start
 
@@ -33,78 +37,119 @@ npm start
 
 The dev server runs at `http://localhost:3000`.
 
+### Environment Variables
+
+Copy `.env.example` to `.env.local` and fill in your Firebase credentials:
+
+```bash
+cp .env.example .env.local
+```
+
+Firebase config is hardcoded in `src/lib/firebase.ts` for client-side reliability, but env vars are available for override.
+
 ## Project Structure
 
 ```
 src/
-  app/                          # Next.js App Router pages
-    page.tsx                    # Homepage
+  app/                              # Next.js App Router pages
+    page.tsx                        # Homepage
     bonus-sans-depot/
-      page.tsx                  # All bonuses listing (filterable table)
-      [slug]/page.tsx           # Individual bonus detail pages (10)
+      page.tsx                      # All bonuses listing (filterable table)
+      [slug]/page.tsx               # Individual bonus detail pages (10)
+      loading.tsx                   # Loading skeleton
     free-spins-sans-depot/
-      page.tsx                  # Free spins category
+      page.tsx                      # Free spins category (full SEO)
     bonus-sans-depot-sans-wagering/
-      page.tsx                  # No-wagering bonuses
+      page.tsx                      # No-wagering bonuses (full SEO)
     bonus-casino-gratuit/
-      page.tsx                  # Free casino bonuses
+      page.tsx                      # Free casino bonuses
     code-promo-casino/
-      page.tsx                  # Promo code offers
+      page.tsx                      # Promo code offers
     blog/
-      page.tsx                  # Blog hub
-      [slug]/page.tsx           # Blog articles (6)
-    about/page.tsx              # About page
-    methodologie/page.tsx       # Scoring methodology
-    api/newsletter/route.ts     # Newsletter signup API
-    sitemap.ts                  # Dynamic sitemap.xml
-    robots.ts                   # robots.txt
-    layout.tsx                  # Root layout
-    globals.css                 # Global styles
+      page.tsx                      # Blog hub with photo cards
+      [slug]/page.tsx               # Blog articles with React renderer
+      loading.tsx                   # Loading skeleton
+    about/page.tsx                  # About page
+    methodologie/page.tsx           # Scoring methodology
+    contact/page.tsx                # Contact form (Firebase)
+    politique-confidentialite/      # Privacy policy (French, GDPR)
+    conditions-utilisation/         # Terms of use (French, 18+)
+    api/
+      newsletter/route.ts           # Newsletter stub (client-side Firebase)
+      contact/route.ts              # Contact stub (client-side Firebase)
+    sitemap.ts                      # Dynamic sitemap.xml
+    robots.ts                       # robots.txt
+    not-found.tsx                   # Custom 404 page
+    loading.tsx                     # Root loading skeleton
+    layout.tsx                      # Root layout (viewport, metadata, icons)
+    globals.css                     # Global styles + typography plugin
   components/
-    Header.tsx                  # Sticky header with navigation
-    Footer.tsx                  # Footer with links + responsible gambling
-    BonusCard.tsx               # Bonus offer card component
-    BonusTable.tsx              # Filterable/sortable comparison table
-    CouponReveal.tsx            # Click-to-reveal promo code
-    CasinoBg.tsx                # SVG casino-themed hero background
-    FAQ.tsx                     # Accordion FAQ with Schema.org markup
-    HowItWorks.tsx              # 4-step process section
-    NewsletterPopup.tsx         # Timed popup (15s delay)
-    NewsletterInline.tsx        # Inline email capture form
+    Header.tsx                      # Sticky header, active state, mobile menu
+    Footer.tsx                      # Footer with legal links, responsible gambling
+    BonusCard.tsx                   # Bonus offer card
+    BonusTable.tsx                  # Filterable/sortable comparison table
+    CouponReveal.tsx                # Tap-to-reveal promo code + copy
+    CasinoBg.tsx                    # SVG casino-themed hero background
+    FAQ.tsx                         # Accordion FAQ with Schema.org markup
+    HowItWorks.tsx                  # 4-step process section
+    NewsletterPopup.tsx             # Timed popup (15s), saves to Firebase
+    NewsletterInline.tsx            # Inline email form, saves to Firebase
+    ContactForm.tsx                 # Contact form, saves to Firebase
   data/
-    bonuses.ts                  # 10 bonus offers + helper functions
-    blog.ts                     # 6 blog articles + helper functions
+    bonuses.ts                      # 10 bonus offers + helper functions
+    blog.ts                         # 21 blog articles + helper functions
   lib/
-    utils.ts                    # Score colors, wagering labels, formatting
+    firebase.ts                     # Firebase client SDK (Firestore)
+    utils.ts                        # Score colors, wagering labels, formatting
+public/
+  favicon.svg                       # SVG favicon (CJ logo)
+firebase.json                       # Firebase project config
+firestore.rules                     # Firestore security rules
 ```
 
-## Pages (31 total)
+## Pages (50 total)
 
 ### Core Pages
 | Route | Description |
 |-------|-------------|
-| `/` | Homepage with hero, top offers, free spins, exclusives, new offers, how-it-works, FAQ |
+| `/` | Homepage: hero with casino SVG bg, top offers, free spins, exclusives, new offers, how-it-works, FAQ |
 | `/bonus-sans-depot` | Full bonus listing with filterable/sortable comparison table |
-| `/bonus-sans-depot/[slug]` | 10 individual bonus detail pages with KPIs, pros/cons, claim steps |
-| `/free-spins-sans-depot` | Free spins offers category |
-| `/bonus-sans-depot-sans-wagering` | No-wagering bonuses with wagering impact table |
+| `/bonus-sans-depot/[slug]` | 10 individual bonus detail pages with KPIs, pros/cons, claim steps, Product JSON-LD |
+| `/free-spins-sans-depot` | Free spins category with full SEO content, tables, pros/cons, internal links |
+| `/bonus-sans-depot-sans-wagering` | No-wagering bonuses with SEO content, wagering comparison tables, internal links |
 | `/bonus-casino-gratuit` | All free casino bonuses |
 | `/code-promo-casino` | Promo code offers with reveal mechanic |
 
-### Editorial
-| Route | Description |
-|-------|-------------|
-| `/blog` | Blog hub with 6 articles across 4 categories |
-| `/blog/[slug]` | Individual blog articles |
-| `/about` | About page + scoring methodology overview |
-| `/methodologie` | Detailed scoring criteria with visual breakdowns |
+### Blog (21 articles, 9 categories)
+| Category | Articles |
+|----------|---------|
+| Guides | Comment fonctionnent les bonus, Peut-on vraiment gagner |
+| Strategies | 7 stratégies pour maximiser un bonus |
+| Comparatifs | Classement 2026, Free spins vs bonus cash |
+| Avertissements | Le wagering expliqué |
+| Casinos | Meilleurs casinos francophones, Choisir un casino fiable, Casino mobile |
+| Jeux | Machines à sous gratuites, Roulette règles/stratégies, Blackjack guide |
+| Securite | Vérifier licence, Protéger données, Jeu responsable |
+| Paiements | Méthodes de retrait, Retirer gains bonus, Crypto-casinos |
+| Tendances | Tendances 2026, Impact IA, Nouveaux casinos |
 
-### SEO & API
+Each article: 600+ words, hero photo (Unsplash), mid-article photos, pros/cons block, comparison tables, 4 FAQs with Schema.org, BlogPosting JSON-LD.
+
+### Legal & Info
 | Route | Description |
 |-------|-------------|
-| `/sitemap.xml` | Auto-generated sitemap with all pages |
+| `/about` | About page with scoring methodology |
+| `/methodologie` | Detailed scoring criteria with visual breakdowns |
+| `/contact` | Contact form (saves to Firebase Firestore) |
+| `/politique-confidentialite` | Privacy policy (GDPR, French) |
+| `/conditions-utilisation` | Terms of use (18+, responsible gambling, French) |
+
+### SEO & System
+| Route | Description |
+|-------|-------------|
+| `/sitemap.xml` | Auto-generated sitemap with real content dates |
 | `/robots.txt` | Search engine directives |
-| `/api/newsletter` | POST endpoint for email signups |
+| `/not-found` | Custom 404 page in French |
 
 ## Key Features
 
@@ -120,26 +165,42 @@ Each bonus is scored on 7 weighted criteria:
 
 ### Comparison Table
 - Filter by: type (free spins / cash), no-wagering, exclusive, country
-- Sort by: score, wagering, estimated value, max win
+- Sort by: score, wagering, estimated value, max win (keyboard accessible)
 - Inline promo code reveal + claim buttons
 
-### Coupon Reveal System
-- Click-to-reveal animation for promo codes
-- Copy-to-clipboard on click
-- "Automatique" badge for no-code bonuses
+### Email Collection (Firebase Firestore)
+- **Newsletter popup**: Appears after 15s, saves to `newsletter_subscribers` with `source: 'popup'`
+- **Inline newsletter**: On every page, saves with `source: 'inline'`
+- **Contact form**: Saves to `contact_messages` collection
+- **Duplicate handling**: Firestore rules prevent client-side reads/deletes
+- **Firestore console**: https://console.firebase.google.com/project/casinojeugratuit/firestore
 
-### Lead Generation
-- **Popup**: Appears after 15 seconds, dismissible, stored in localStorage
-- **Inline CTA**: Embedded in pages after content sections
-- **API endpoint**: Ready for Brevo / Mailchimp integration
+### Blog Renderer
+Custom markdown-to-React parser supporting:
+- `:::image IMAGE_ID:::` — Unsplash photos with gradient overlay + caption
+- `:::proscons Title:::` — Side-by-side green/red pros/cons cards
+- Markdown tables rendered as styled Tailwind components
+- Headers, lists, bold, paragraphs — all as React components (not dangerouslySetInnerHTML)
 
 ### SEO
-- Static site generation for all pages
-- Schema.org FAQ markup on every page
-- Dynamic `sitemap.xml` covering all bonus and blog URLs
-- Semantic HTML with proper heading hierarchy
-- Long-form SEO content on category pages
-- Internal linking between related pages
+- Static site generation for all 50 pages
+- Schema.org: FAQPage, BlogPosting, CollectionPage, ItemList, Product/Offer
+- Dynamic `sitemap.xml` with real content dates
+- Canonical URLs on all pages
+- Viewport meta tag
+- Breadcrumb navigation on detail pages
+- Long-form SEO content (1500-2000 words on category pages)
+- Internal linking (9+ links per category page)
+- Open Graph metadata
+
+### Accessibility
+- ARIA labels on all interactive elements
+- `aria-expanded`/`aria-controls` on menus and accordions
+- Keyboard-accessible table sorting
+- Form labels (visible or sr-only)
+- Min 48px touch targets
+- WCAG AA contrast compliance
+- `role="dialog"` on newsletter popup
 
 ## Data Model
 
@@ -164,8 +225,8 @@ interface Bonus {
   promoCode: string | null;
   exclusive: boolean;
   isNew: boolean;
-  score: number;           // 0-100 proprietary score
-  estimatedValue: number;  // Real EV in euros
+  score: number;
+  estimatedValue: number;
   affiliateLink: string;
   pros: string[];
   cons: string[];
@@ -180,11 +241,30 @@ interface BlogPost {
   slug: string;
   title: string;
   excerpt: string;
-  category: 'guides' | 'strategies' | 'comparatifs' | 'avertissements';
-  content: string;         // Markdown content
+  category: 'guides' | 'strategies' | 'comparatifs' | 'avertissements'
+           | 'casinos' | 'jeux' | 'securite' | 'paiements' | 'tendances';
+  content: string;    // Custom markdown with :::image::: and :::proscons::: blocks
   date: string;
   readTime: number;
+  image: string;
+  faq: { q: string; a: string }[];
 }
+```
+
+### Firestore Collections
+```
+newsletter_subscribers/
+  - email: string
+  - source: 'popup' | 'inline'
+  - subscribedAt: ISO string
+  - active: boolean
+
+contact_messages/
+  - name: string
+  - email: string
+  - message: string
+  - sentAt: ISO string
+  - read: boolean
 ```
 
 ## Adding Content
@@ -193,7 +273,9 @@ interface BlogPost {
 Edit `src/data/bonuses.ts` and add a new object to the `bonuses` array. The page at `/bonus-sans-depot/[slug]` is auto-generated via `generateStaticParams`.
 
 ### Add a New Blog Post
-Edit `src/data/blog.ts` and add a new object to the `blogPosts` array. The page at `/blog/[slug]` is auto-generated.
+Edit `src/data/blog.ts` and add a new object to the `blogPosts` array. Use `:::image IMAGE_ID:::` for photos and `:::proscons Title:::` for pros/cons blocks. The page at `/blog/[slug]` is auto-generated.
+
+Available image IDs: `hero-bonus`, `hero-gains`, `hero-strategy`, `hero-ranking`, `hero-wagering`, `hero-compare`, `slots-closeup`, `casino-chips`, `roulette-table`, `casino-cards`, `neon-casino`, `dice-roll`, `jackpot-screen`, `poker-chips-stack`.
 
 ## Design System
 
@@ -217,28 +299,62 @@ Edit `src/data/blog.ts` and add a new object to the `blogPosts` array. The page 
 | 60-74 | Orange (`text-orange-600`) |
 | 0-59 | Red (`text-red-600`) |
 
+### Category Badge Colors
+| Category | Color |
+|----------|-------|
+| Guides | Blue |
+| Strategies | Purple |
+| Comparatifs | Orange |
+| Avertissements | Red |
+| Casinos | Amber |
+| Jeux | Emerald |
+| Securite | Sky |
+| Paiements | Violet |
+| Tendances | Pink |
+
 ## Deployment
 
-### Vercel (recommended)
+### Vercel (current)
+The site auto-deploys from GitHub on every push to `main`.
+
+- **Dashboard**: https://vercel.com/jarons-projects-73d972c2/casinojeugratuit
+- **Live URL**: https://casinojeugratuit.vercel.app
+- **Env vars**: All Firebase config added to Vercel production
+
+### Firebase
+- **Project**: casinojeugratuit
+- **Console**: https://console.firebase.google.com/project/casinojeugratuit/overview
+- **Firestore**: https://console.firebase.google.com/project/casinojeugratuit/firestore
+- **Region**: EUR3 (Europe)
+
+Deploy Firestore rules:
 ```bash
-npm i -g vercel
-vercel
+firebase deploy --only firestore:rules --project casinojeugratuit
 ```
 
-### Static Export
-Add `output: 'export'` to `next.config.ts` for fully static hosting (Netlify, Cloudflare Pages, etc.).
+### Custom Domain
+To connect `casinojeugratuit.com`:
+1. Go to Vercel dashboard > Settings > Domains
+2. Add `casinojeugratuit.com`
+3. Update DNS: CNAME `www` -> `cname.vercel-dns.com` + A record to Vercel IP
 
 ## Roadmap
 
-- [ ] Integrate Brevo/Mailchimp for newsletter API
+- [x] ~~Integrate email collection~~ (Firebase Firestore)
+- [x] ~~Rewrite blog articles with full SEO~~ (21 articles, 600+ words each)
+- [x] ~~Add legal pages~~ (privacy policy, terms, contact)
+- [x] ~~Fix accessibility~~ (ARIA, keyboard, contrast, touch targets)
+- [x] ~~Add structured data~~ (FAQ, BlogPosting, Product, CollectionPage)
+- [x] ~~Deploy to Vercel~~ (auto-deploy from GitHub)
 - [ ] Add real affiliate links
 - [ ] Expand to 30+ bonus offers
-- [ ] Rewrite blog articles with full SEO (600+ words, FAQs, comparisons)
 - [ ] Add casino review pages
 - [ ] Implement A/B testing on CTA buttons
 - [ ] Add country auto-detection for filtering
 - [ ] PWA support for mobile
 - [ ] Admin CMS for managing offers without code changes
+- [ ] Google Analytics + consent management
+- [ ] Connect custom domain casinojeugratuit.com
 
 ## License
 
