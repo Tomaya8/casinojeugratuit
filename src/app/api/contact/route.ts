@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { db } from '@/lib/firebase';
+import { collection, addDoc } from 'firebase/firestore';
 
 function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && email.length <= 254;
@@ -26,8 +28,18 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Message requis (10 caractères minimum)' }, { status: 400 });
   }
 
-  // TODO: Integrate with email service (Brevo transactional, SendGrid, etc.)
-  console.log('Contact form:', { name, email, message: message.slice(0, 100) });
+  try {
+    await addDoc(collection(db, 'contact_messages'), {
+      name: name.trim(),
+      email: email.toLowerCase(),
+      message: message.trim(),
+      sentAt: new Date().toISOString(),
+      read: false,
+    });
 
-  return NextResponse.json({ success: true, message: 'Message envoyé avec succès' });
+    return NextResponse.json({ success: true, message: 'Message envoyé avec succès !' });
+  } catch (error) {
+    console.error('Firebase error:', error);
+    return NextResponse.json({ error: 'Erreur serveur. Réessayez plus tard.' }, { status: 500 });
+  }
 }

@@ -23,7 +23,7 @@ export default function NewsletterPopup() {
       await fetch('/api/newsletter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, source: 'popup' }),
       });
     } catch {
       // Silently fail - popup will still close
