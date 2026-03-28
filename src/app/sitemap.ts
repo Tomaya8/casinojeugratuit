@@ -3,7 +3,7 @@ import { bonuses } from '@/data/bonuses';
 import { blogPosts } from '@/data/blog';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = 'https://casinojeugratuit.com';
+  const base = process.env.NEXT_PUBLIC_SITE_URL || 'https://casinojeugratuit.com';
 
   // Use the most recent bonus/blog date for listing pages instead of new Date()
   const latestBonusDate = bonuses.reduce((latest, b) => {

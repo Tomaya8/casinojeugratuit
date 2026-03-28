@@ -171,7 +171,7 @@ export default function BonusTable({ bonuses, title }: { bonuses: Bonus[]; title
       </div>
 
       {filtered.length === 0 && (
-        <div className="text-center py-10 text-gray-400">
+        <div className="text-center py-10 text-gray-500">
           Aucun bonus ne correspond à vos filtres.
         </div>
       )}

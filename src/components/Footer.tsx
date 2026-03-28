@@ -51,11 +51,11 @@ export default function Footer() {
         <div className="mt-10 pt-8 border-t border-orange-100">
           <div className="bg-orange-50 border border-orange-200 rounded-xl p-4 mb-6">
             <p className="text-xs text-gray-600 leading-relaxed">
-              <strong className="text-gray-800">Jeu responsable :</strong> Les jeux de casino comportent des risques. Ne jouez jamais avec de l&apos;argent que vous ne pouvez pas vous permettre de perdre. Les bonus sans depot vous permettent de jouer gratuitement, mais les gains restent soumis a des conditions. Si vous pensez avoir un probleme avec le jeu, contactez Joueurs Info Service au 09 74 75 13 13 (France) ou visitez <span className="text-orange-600 font-medium">joueurs-info-service.fr</span>.
+              <strong className="text-gray-800">Jeu responsable :</strong> Les jeux de casino comportent des risques. Ne jouez jamais avec de l&apos;argent que vous ne pouvez pas vous permettre de perdre. Les bonus sans depot vous permettent de jouer gratuitement, mais les gains restent soumis a des conditions. Si vous pensez avoir un probleme avec le jeu, contactez Joueurs Info Service au <a href="tel:0974751313" className="text-orange-600 font-medium underline">09 74 75 13 13</a> (France) ou visitez <a href="https://www.joueurs-info-service.fr" target="_blank" rel="noopener noreferrer" className="text-orange-600 font-medium underline">joueurs-info-service.fr</a>.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
             <p>&copy; {new Date().getFullYear()} CasinoJeuGratuit.com — Tous droits reserves</p>
             <p>18+ | Les bonus sont soumis a conditions | Jouer comporte des risques</p>
           </div>

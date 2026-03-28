@@ -28,6 +28,7 @@ export const metadata: Metadata = {
     locale: 'fr_FR',
     siteName: 'CasinoJeuGratuit',
   },
+  icons: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
 };
 
 export default function RootLayout({
