@@ -15,6 +15,11 @@ const categoryLabels: Record<string, string> = {
   strategies: 'Stratégies',
   comparatifs: 'Comparatifs',
   avertissements: 'Avertissements',
+  casinos: 'Casinos',
+  jeux: 'Jeux',
+  securite: 'Sécurité',
+  paiements: 'Paiements',
+  tendances: 'Tendances',
 };
 
 const categoryColors: Record<string, string> = {
@@ -22,6 +27,11 @@ const categoryColors: Record<string, string> = {
   strategies: 'bg-purple-100 text-purple-700 border-purple-200',
   comparatifs: 'bg-orange-100 text-orange-600 border-orange-200',
   avertissements: 'bg-red-100 text-red-700 border-red-200',
+  casinos: 'bg-amber-100 text-amber-700 border-amber-200',
+  jeux: 'bg-emerald-100 text-emerald-700 border-emerald-200',
+  securite: 'bg-sky-100 text-sky-700 border-sky-200',
+  paiements: 'bg-violet-100 text-violet-700 border-violet-200',
+  tendances: 'bg-pink-100 text-pink-700 border-pink-200',
 };
 
 const postImages: Record<string, { src: string; alt: string }> = {
@@ -48,6 +58,38 @@ const postImages: Record<string, { src: string; alt: string }> = {
   'free-spins-vs-bonus-cash': {
     src: 'https://images.unsplash.com/photo-1609743522653-52354461eb27?w=600&h=340&fit=crop&q=80',
     alt: 'Roue de roulette de casino en mouvement',
+  },
+  'meilleurs-casinos-en-ligne-francophones-2026': {
+    src: 'https://images.unsplash.com/photo-1518893063132-36e46dbe2428?w=600&h=340&fit=crop&q=80',
+    alt: 'Intérieur de casino luxueux avec tables de jeu',
+  },
+  'comment-choisir-casino-en-ligne-fiable': {
+    src: 'https://images.unsplash.com/photo-1562813733-b31f71025d54?w=600&h=340&fit=crop&q=80',
+    alt: 'Jetons de poker empilés sur table verte',
+  },
+  'casino-mobile-jouer-smartphone-2026': {
+    src: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&h=340&fit=crop&q=80',
+    alt: 'Machines à sous de casino avec lumières néon',
+  },
+  'meilleures-machines-a-sous-gratuites-2026': {
+    src: 'https://images.unsplash.com/photo-1559131397-f94da358f7ca?w=600&h=340&fit=crop&q=80',
+    alt: 'Écran de machine à sous coloré',
+  },
+  'roulette-gratuite-en-ligne-regles-strategies': {
+    src: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&h=340&fit=crop&q=80',
+    alt: 'Table de roulette de casino vue de dessus',
+  },
+  'blackjack-gratuit-guide-complet-debutant': {
+    src: 'https://images.unsplash.com/photo-1606167668584-78701c57f13d?w=600&h=340&fit=crop&q=80',
+    alt: 'Cartes de blackjack et jetons sur tapis vert',
+  },
+  'comment-verifier-licence-casino-en-ligne': {
+    src: 'https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=600&h=340&fit=crop&q=80',
+    alt: 'Enseigne néon de casino illuminée la nuit',
+  },
+  'proteger-donnees-personnelles-casinos-en-ligne': {
+    src: 'https://images.unsplash.com/photo-1605870445919-838d190e8e1b?w=600&h=340&fit=crop&q=80',
+    alt: 'Cadenas de sécurité numérique',
   },
 };
 
