@@ -27,6 +27,8 @@ Ce type de bonus existe depuis les débuts des casinos en ligne, mais il est dev
 
 ## Les différents types de bonus sans dépôt
 
+:::image slots-closeup:::
+
 ### Free spins (tours gratuits)
 
 Les free spins sont le type le plus courant de bonus sans dépôt. Le casino vous offre un nombre défini de tours gratuits (généralement entre 10 et 50) utilisables sur une ou plusieurs machines à sous spécifiques.
@@ -42,6 +44,8 @@ Les free spins sont le type le plus courant de bonus sans dépôt. Le casino vou
 - Valeur par spin souvent basse (0.10€ à 0.25€)
 - Gains très dépendants de la volatilité du jeu
 - Impossible de contrôler sa mise
+
+:::image casino-chips:::
 
 ### Bonus cash (argent gratuit)
 
@@ -190,6 +194,8 @@ Cela signifie qu'en théorie, le bonus de 10€ ne suffit pas à couvrir les per
 
 Sur 100 joueurs qui réclament un bonus de 10€ avec wagering x30, environ 18 parviendront à remplir les conditions et à retirer de l'argent. Les 82 autres verront leur solde tomber à zéro pendant le wagering. C'est mathématique.
 
+:::image jackpot-screen:::
+
 ## Les facteurs qui augmentent vos chances
 
 ### 1. Choisir des offres à faible wagering
@@ -234,6 +240,8 @@ Un gain maximum élevé par rapport au bonus est un bon signe. Un ratio de 10:1 
 - **Jouer sur des jeux non éligibles** : les mises ne comptent pas pour le wagering
 - **Attendre le dernier moment** : le stress mène à de mauvaises décisions
 - **Chasser les pertes** : augmenter les mises pour "se refaire" est contre-productif
+
+:::image neon-casino:::
 
 ## Comparaison : bonus sans dépôt vs bonus avec dépôt
 
@@ -333,6 +341,8 @@ EV = Montant du bonus × (RTP ^ Wagering)
 
 Dans cet exemple, le bonus de 5€ sans wagering a une meilleure valeur réelle que le bonus de 20€. C'est contre-intuitif, mais c'est mathématique. Ne vous laissez pas impressionner par les gros chiffres — analysez la valeur réelle.
 
+:::image slots-closeup:::
+
 ## Stratégie 3 : Choisissez les jeux à RTP élevé
 
 Le choix du jeu est le deuxième facteur le plus important après le wagering. Un écart de 2% de RTP peut sembler négligeable, mais sur 300€ de mises (wagering x30 sur 10€), cela représente une différence de 6€ — soit plus que la moitié du bonus.
@@ -385,6 +395,8 @@ La gestion du temps est un aspect souvent négligé. Voici comment l'aborder :
 - **Dernières heures** : Ne paniquez pas — si c'est impossible, acceptez-le
 
 **Conseil** : programmez un rappel dans votre téléphone pour la date d'expiration du bonus.
+
+:::image poker-chips-stack:::
 
 ## Stratégie 7 : Cumulez les offres sur plusieurs casinos
 
@@ -499,6 +511,8 @@ Vegaz Casino propose **10 free spins sans wagering** sur Starburst XXXtreme. Les
 - Seulement 10 free spins
 - Gain maximum de 50€
 - Un seul jeu éligible
+
+:::image dice-roll:::
 
 ### 3. Jackpot Bob — 40 Free Spins (Score : 90/100)
 
@@ -675,6 +689,8 @@ Certains casinos appliquent le wagering sur la somme du bonus ET des gains gén�
 
 Plus rare mais existant : le wagering s'applique uniquement sur les gains. Exemple : 20 free spins génèrent 5€ de gains, wagering x20 = 100€ de mises. C'est généralement plus avantageux.
 
+:::image roulette-table:::
+
 ## La contribution des jeux au wagering
 
 Tous les jeux ne contribuent pas de la même manière au wagering. C'est un aspect crucial souvent négligé :
@@ -722,6 +738,8 @@ Comme expliqué plus haut, certains casinos calculent le wagering sur le bonus p
 ### Piège 4 : L'expiration silencieuse
 
 Le wagering a une durée limitée. Si vous ne le complétez pas à temps, tout disparaît — bonus et gains. Certains casinos n'envoient pas de rappel avant l'expiration.
+
+:::image poker-chips-stack:::
 
 ## Comment évaluer rapidement la qualité d'un wagering
 
@@ -799,6 +817,8 @@ Les gains générés par les free spins sont crédités sous forme de bonus et s
 - **Mises requises** : 6€ × 35 = 210€
 - **Valeur réelle estimée** : ~2.10€
 
+:::image casino-chips:::
+
 ## Bonus cash sans dépôt : l'analyse complète
 
 ### Comment fonctionne le bonus cash
@@ -875,6 +895,8 @@ Quel que soit votre profil, les **offres sans wagering** sont toujours le meille
 ### Vous voulez du volume → Diversifiez
 
 La stratégie optimale est de combiner les deux types. Réclamez des free spins sur certains casinos et des bonus cash sur d'autres. Cette diversification maximise vos chances globales de gain.
+
+:::image neon-casino:::
 
 ## Le meilleur des deux mondes : les offres hybrides
 

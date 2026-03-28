@@ -122,42 +122,78 @@ type Section =
 
 // ---- HERO IMAGES ----
 
-const HERO_IMAGES: Record<string, { src: string; alt: string; caption: string; color: string }> = {
+const HERO_IMAGES: Record<string, { src: string; alt: string; caption: string }> = {
+  // Hero images (top of articles)
   'hero-bonus': {
     src: 'https://images.unsplash.com/photo-1596838132731-3301c3fd4317?w=900&h=400&fit=crop&q=80',
     alt: 'Jetons de casino colorés sur table de jeu verte',
     caption: 'Bonus sans dépôt : le guide essentiel pour jouer gratuitement',
-    color: 'from-orange-600 to-red-600',
   },
   'hero-gains': {
     src: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=900&h=400&fit=crop&q=80',
     alt: 'Machine à sous de casino avec lumières néon',
     caption: 'Peut-on vraiment gagner avec un bonus sans dépôt ?',
-    color: 'from-emerald-600 to-teal-600',
   },
   'hero-strategy': {
     src: 'https://images.unsplash.com/photo-1606167668584-78701c57f13d?w=900&h=400&fit=crop&q=80',
     alt: 'Cartes de poker et jetons sur table de casino',
     caption: '7 stratégies éprouvées pour maximiser vos bonus',
-    color: 'from-blue-600 to-indigo-600',
   },
   'hero-ranking': {
     src: 'https://images.unsplash.com/photo-1518893063132-36e46dbe2428?w=900&h=400&fit=crop&q=80',
     alt: 'Intérieur luxueux de casino avec tables de jeu',
     caption: 'Classement 2026 des meilleurs bonus sans dépôt',
-    color: 'from-orange-600 to-amber-600',
   },
   'hero-wagering': {
     src: 'https://images.unsplash.com/photo-1594139590891-76e145a3d820?w=900&h=400&fit=crop&q=80',
     alt: 'Dés de casino rouges sur table de jeu',
     caption: 'Le wagering décrypté : comprendre les conditions de mise',
-    color: 'from-red-600 to-rose-600',
   },
   'hero-compare': {
     src: 'https://images.unsplash.com/photo-1609743522653-52354461eb27?w=900&h=400&fit=crop&q=80',
     alt: 'Roue de roulette de casino en mouvement',
     caption: 'Free Spins vs Bonus Cash : le comparatif complet',
-    color: 'from-purple-600 to-violet-600',
+  },
+  // Mid-article images
+  'slots-closeup': {
+    src: 'https://images.unsplash.com/photo-1585218334730-58f7390c2fae?w=900&h=360&fit=crop&q=80',
+    alt: 'Écran de machine à sous affichant des symboles de fruits',
+    caption: 'Les free spins vous permettent de tester les machines à sous gratuitement',
+  },
+  'casino-chips': {
+    src: 'https://images.unsplash.com/photo-1541278107931-e006523892df?w=900&h=360&fit=crop&q=80',
+    alt: 'Piles de jetons de casino de différentes couleurs',
+    caption: 'Le bonus cash vous offre de l\'argent réel à utiliser librement',
+  },
+  'roulette-table': {
+    src: 'https://images.unsplash.com/photo-1606890658507-4a48d45e67f4?w=900&h=360&fit=crop&q=80',
+    alt: 'Table de roulette de casino vue du dessus',
+    caption: 'Les jeux de table contribuent moins au wagering que les machines à sous',
+  },
+  'casino-cards': {
+    src: 'https://images.unsplash.com/photo-1541278107931-e006523892df?w=900&h=360&fit=crop&q=80',
+    alt: 'Main de cartes de poker sur tapis vert',
+    caption: 'Choisir le bon jeu est essentiel pour maximiser vos chances',
+  },
+  'neon-casino': {
+    src: 'https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=900&h=360&fit=crop&q=80',
+    alt: 'Enseigne néon de casino illuminée la nuit',
+    caption: 'Comparez toujours les offres avant de choisir un casino',
+  },
+  'dice-roll': {
+    src: 'https://images.unsplash.com/photo-1611195974226-a6a9be9dd763?w=900&h=360&fit=crop&q=80',
+    alt: 'Dés rouges lancés sur un tapis de jeu vert',
+    caption: 'La chance joue un rôle, mais la stratégie fait la différence',
+  },
+  'jackpot-screen': {
+    src: 'https://images.unsplash.com/photo-1596731498067-b1e4e571a47a?w=900&h=360&fit=crop&q=80',
+    alt: 'Écran de jackpot de machine à sous illuminé',
+    caption: 'Les gains sont possibles, mais toujours plafonnés par les conditions',
+  },
+  'poker-chips-stack': {
+    src: 'https://images.unsplash.com/photo-1562813733-b31f71025d54?w=900&h=360&fit=crop&q=80',
+    alt: 'Pile de jetons de poker empilés sur table verte',
+    caption: 'La gestion de bankroll est la clé pour remplir le wagering',
   },
 };
 
