@@ -91,6 +91,34 @@ const postImages: Record<string, { src: string; alt: string }> = {
     src: 'https://images.unsplash.com/photo-1605870445919-838d190e8e1b?w=600&h=340&fit=crop&q=80',
     alt: 'Cadenas de sécurité numérique',
   },
+  'jeu-responsable-signes-alerte-ressources-aide': {
+    src: 'https://images.unsplash.com/photo-1611195974226-a6a9be9dd763?w=600&h=340&fit=crop&q=80',
+    alt: 'Dés rouges lancés sur tapis de jeu',
+  },
+  'methodes-retrait-rapides-casino-en-ligne': {
+    src: 'https://images.unsplash.com/photo-1562813733-b31f71025d54?w=600&h=340&fit=crop&q=80',
+    alt: 'Pile de jetons de poker sur table verte',
+  },
+  'retirer-gains-bonus-sans-depot-guide': {
+    src: 'https://images.unsplash.com/photo-1596838132731-3301c3fd4317?w=600&h=340&fit=crop&q=80',
+    alt: 'Jetons de casino colorés sur table de jeu',
+  },
+  'crypto-casinos-bonus-sans-depot-bitcoin': {
+    src: 'https://images.unsplash.com/photo-1518893063132-36e46dbe2428?w=600&h=340&fit=crop&q=80',
+    alt: 'Intérieur de casino moderne avec éclairage',
+  },
+  'tendances-casino-en-ligne-2026': {
+    src: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&h=340&fit=crop&q=80',
+    alt: 'Machines à sous de casino futuristes',
+  },
+  'impact-intelligence-artificielle-casinos-en-ligne': {
+    src: 'https://images.unsplash.com/photo-1553481187-be93c21490a9?w=600&h=340&fit=crop&q=80',
+    alt: 'Technologie et lumières de casino',
+  },
+  'nouveaux-casinos-en-ligne-2026-offres': {
+    src: 'https://images.unsplash.com/photo-1609743522653-52354461eb27?w=600&h=340&fit=crop&q=80',
+    alt: 'Roue de roulette de casino dorée',
+  },
 };
 
 export default function BlogPage() {
