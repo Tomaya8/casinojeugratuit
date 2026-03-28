@@ -42,7 +42,7 @@ const postImages: Record<string, { src: string; alt: string }> = {
     alt: 'Intérieur luxueux de casino avec tables de jeu',
   },
   'wagering-explique': {
-    src: 'https://images.unsplash.com/photo-1594139590891-76e145a3d820?w=600&h=340&fit=crop&q=80',
+    src: 'https://images.unsplash.com/photo-1517232115160-ff93364542dd?w=600&h=340&fit=crop&q=80',
     alt: 'Dés de casino rouges sur table de jeu',
   },
   'free-spins-vs-bonus-cash': {

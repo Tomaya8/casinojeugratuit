@@ -145,7 +145,7 @@ const HERO_IMAGES: Record<string, { src: string; alt: string; caption: string }>
     caption: 'Classement 2026 des meilleurs bonus sans dépôt',
   },
   'hero-wagering': {
-    src: 'https://images.unsplash.com/photo-1594139590891-76e145a3d820?w=900&h=400&fit=crop&q=80',
+    src: 'https://images.unsplash.com/photo-1517232115160-ff93364542dd?w=900&h=400&fit=crop&q=80',
     alt: 'Dés de casino rouges sur table de jeu',
     caption: 'Le wagering décrypté : comprendre les conditions de mise',
   },
@@ -156,7 +156,7 @@ const HERO_IMAGES: Record<string, { src: string; alt: string; caption: string }>
   },
   // Mid-article images
   'slots-closeup': {
-    src: 'https://images.unsplash.com/photo-1585218334730-58f7390c2fae?w=900&h=360&fit=crop&q=80',
+    src: 'https://images.unsplash.com/photo-1559131397-f94da358f7ca?w=900&h=360&fit=crop&q=80',
     alt: 'Écran de machine à sous affichant des symboles de fruits',
     caption: 'Les free spins vous permettent de tester les machines à sous gratuitement',
   },
@@ -166,7 +166,7 @@ const HERO_IMAGES: Record<string, { src: string; alt: string; caption: string }>
     caption: 'Le bonus cash vous offre de l\'argent réel à utiliser librement',
   },
   'roulette-table': {
-    src: 'https://images.unsplash.com/photo-1606890658507-4a48d45e67f4?w=900&h=360&fit=crop&q=80',
+    src: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=900&h=360&fit=crop&q=80',
     alt: 'Table de roulette de casino vue du dessus',
     caption: 'Les jeux de table contribuent moins au wagering que les machines à sous',
   },
@@ -186,7 +186,7 @@ const HERO_IMAGES: Record<string, { src: string; alt: string; caption: string }>
     caption: 'La chance joue un rôle, mais la stratégie fait la différence',
   },
   'jackpot-screen': {
-    src: 'https://images.unsplash.com/photo-1596731498067-b1e4e571a47a?w=900&h=360&fit=crop&q=80',
+    src: 'https://images.unsplash.com/photo-1605870445919-838d190e8e1b?w=900&h=360&fit=crop&q=80',
     alt: 'Écran de jackpot de machine à sous illuminé',
     caption: 'Les gains sont possibles, mais toujours plafonnés par les conditions',
   },
