@@ -1,25 +1,24 @@
 'use client';
 import { useState } from 'react';
+import { subscribeNewsletter } from '@/lib/firebase';
 
 export default function NewsletterInline() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+    setLoading(true);
     try {
-      const res = await fetch('/api/newsletter', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, source: 'inline' }),
-      });
-      if (!res.ok) throw new Error();
+      await subscribeNewsletter(email, 'inline');
       setSubmitted(true);
     } catch {
       setError('Une erreur est survenue. Veuillez réessayer.');
     }
+    setLoading(false);
   };
 
   if (submitted) {
@@ -47,14 +46,16 @@ export default function NewsletterInline() {
             placeholder="votre@email.com"
             required
             autoComplete="email"
-            className="w-full px-4 py-3 bg-[#faf7f2] border border-orange-100 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100"
+            disabled={loading}
+            className="w-full px-4 py-3 bg-[#faf7f2] border border-orange-100 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 disabled:opacity-50"
           />
         </div>
         <button
           type="submit"
-          className="px-6 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold rounded-xl hover:from-orange-600 hover:to-red-600 transition-all whitespace-nowrap shadow-md shadow-orange-200"
+          disabled={loading}
+          className="px-6 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold rounded-xl hover:from-orange-600 hover:to-red-600 transition-all whitespace-nowrap shadow-md shadow-orange-200 disabled:opacity-50"
         >
-          S&apos;inscrire
+          {loading ? 'Envoi...' : "S'inscrire"}
         </button>
       </form>
       {error && <p className="text-sm text-red-600 mt-2">{error}</p>}

@@ -2,12 +2,13 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Newsletter subscribers - allow create only (no read/update/delete from client)
+    // Newsletter subscribers - allow create + read (for duplicate check)
     match /newsletter_subscribers/{document=**} {
       allow create: if request.resource.data.email is string
                     && request.resource.data.email.size() > 0
                     && request.resource.data.email.size() < 255;
-      allow read, update, delete: if false;
+      allow read: if true;
+      allow update, delete: if false;
     }
 
     // Contact messages - allow create only

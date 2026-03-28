@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import ContactForm from '@/components/ContactForm';
 
 export const metadata: Metadata = {
   title: 'Contact — CasinoJeuGratuit',
@@ -18,57 +19,7 @@ export default function ContactPage() {
             <p className="text-sm text-gray-500">
               Remplissez le formulaire ci-dessous et nous vous répondrons dans les meilleurs délais.
             </p>
-
-            <form className="space-y-4">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                  Nom
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  className="w-full px-4 py-2 border border-orange-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 bg-[#faf7f2] text-gray-900"
-                  placeholder="Votre nom"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  className="w-full px-4 py-2 border border-orange-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 bg-[#faf7f2] text-gray-900"
-                  placeholder="votre@email.com"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows={5}
-                  className="w-full px-4 py-2 border border-orange-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 bg-[#faf7f2] text-gray-900 resize-vertical"
-                  placeholder="Votre message..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold py-3 px-6 rounded-lg hover:from-orange-600 hover:to-red-600 transition-all"
-              >
-                Envoyer le message
-              </button>
-            </form>
+            <ContactForm />
           </div>
         </div>
 
@@ -93,7 +44,7 @@ export default function ContactPage() {
 
           <div className="bg-orange-50 border border-orange-200 rounded-xl p-4">
             <p className="text-xs text-gray-600 leading-relaxed">
-              <strong className="text-gray-800">Jeu responsable :</strong> Si vous avez un problème avec le jeu, contactez Joueurs Info Service au 09 74 75 13 13 ou visitez joueurs-info-service.fr.
+              <strong className="text-gray-800">Jeu responsable :</strong> Si vous avez un problème avec le jeu, contactez Joueurs Info Service au <a href="tel:0974751313" className="text-orange-600 underline">09 74 75 13 13</a> ou visitez <a href="https://www.joueurs-info-service.fr" target="_blank" rel="noopener noreferrer" className="text-orange-600 underline">joueurs-info-service.fr</a>.
             </p>
           </div>
         </div>
