@@ -17,6 +17,8 @@ export const blogPosts: BlogPost[] = [
     excerpt: 'Tout comprendre sur les bonus casino sans dépôt : mécanismes, conditions, types d\'offres, et conseils pour en tirer le maximum. Guide détaillé pour débutants et joueurs expérimentés.',
     category: 'guides',
     content: `
+:::image hero-bonus:::
+
 ## Qu'est-ce qu'un bonus sans dépôt ?
 
 Un **bonus sans dépôt** est une offre promotionnelle proposée par les casinos en ligne qui permet aux nouveaux joueurs de jouer **sans avoir à investir leur propre argent**. Contrairement aux bonus de bienvenue classiques qui doublent ou triplent un premier dépôt, le bonus sans dépôt est entièrement gratuit. Il suffit de s'inscrire sur la plateforme pour en bénéficier.
@@ -67,6 +69,21 @@ Le bonus cash consiste en une somme d'argent créditée directement sur votre co
 | Contrôle | Faible | Élevé |
 | Wagering moyen | x25-x35 | x25-x40 |
 | Idéal pour | Découvrir un jeu | Tester le casino |
+
+:::proscons Bonus sans dépôt : faut-il en profiter ?:::
+pros:
+- Aucun risque financier — vous ne déposez rien
+- Possibilité de gagner de l'argent réel gratuitement
+- Excellent moyen de tester un casino avant de s'engager
+- Disponible dans la plupart des pays francophones
+- Permet de découvrir de nouveaux jeux sans frais
+cons:
+- Conditions de mise (wagering) souvent strictes
+- Gains plafonnés (50€ à 200€ maximum en général)
+- Validité limitée dans le temps (3 à 30 jours)
+- Choix de jeux restreint sur certaines offres
+- Vérification d'identité nécessaire avant retrait
+:::end:::
 
 ## Le processus étape par étape
 
@@ -141,6 +158,8 @@ Les bonus sans dépôt sont un excellent moyen de découvrir l'univers des casin
     excerpt: 'Analyse honnête et chiffrée des chances réelles de gain avec les bonus casino sans dépôt. Probabilités, valeur espérée, et retours d\'expérience.',
     category: 'guides',
     content: `
+:::image hero-gains:::
+
 ## La réponse courte : oui, mais avec des nuances
 
 Oui, il est **techniquement possible** de gagner de l'argent réel avec un bonus sans dépôt. Des joueurs y parviennent chaque jour. Cependant, il est essentiel d'être réaliste sur vos chances avant de vous lancer. Ce guide analyse les probabilités réelles, les facteurs qui influencent vos chances, et les stratégies pour les maximiser.
@@ -227,6 +246,21 @@ Un gain maximum élevé par rapport au bonus est un bon signe. Un ratio de 10:1 
 | Gain max typique | 50-200€ | 500-5000€ |
 | Idéal pour | Découvrir | Gros gains potentiels |
 
+:::proscons Gagner avec un bonus sans dépôt:::
+pros:
+- Zéro risque financier pour le joueur
+- Gains réels possibles (12-20% de probabilité)
+- Excellent pour tester un casino gratuitement
+- Les offres sans wagering ont 100% de valeur
+- Cumulable sur plusieurs casinos
+cons:
+- Probabilité de profit inférieure à 20%
+- Gains plafonnés (souvent 50-200€ max)
+- Le wagering réduit fortement la valeur réelle
+- Temps nécessaire pour remplir les conditions
+- Frustration si le bonus expire avant la fin
+:::end:::
+
 ## Notre verdict honnête
 
 Les bonus sans dépôt **ne sont pas un moyen de gagner sa vie**. Ce sont des outils de découverte qui offrent une chance réelle mais limitée de gain. Voici notre recommandation :
@@ -263,6 +297,8 @@ Considérez chaque bonus sans dépôt comme un **ticket de loterie gratuit**. Ce
     excerpt: 'Stratégies concrètes et testées pour tirer le maximum de valeur de vos bonus casino sans dépôt. Choix des jeux, gestion de bankroll, et erreurs fatales à éviter.',
     category: 'strategies',
     content: `
+:::image hero-strategy:::
+
 ## Pourquoi la stratégie compte
 
 La plupart des joueurs réclament leur bonus sans dépôt et commencent à jouer sans réfléchir. Résultat : ils perdent leur solde en quelques minutes. Avec une approche méthodique, vous pouvez **multiplier par 2 à 3 vos chances** de remplir le wagering et de retirer des gains réels. Voici 7 stratégies éprouvées par notre équipe d'analystes.
@@ -365,6 +401,21 @@ La stratégie la plus efficace à long terme est de **diversifier**. Inscrivez-v
 - Gestion de plusieurs comptes
 - Vérification d'identité sur chaque casino
 
+:::proscons Appliquer une stratégie de bonus:::
+pros:
+- Multiplie par 2-3x vos chances de profit
+- Permet de choisir les meilleures offres objectivement
+- La gestion de bankroll prolonge votre temps de jeu
+- La diversification sur plusieurs casinos réduit le risque
+- Comprendre les T&C évite les mauvaises surprises
+cons:
+- Demande du temps et de la discipline
+- Les calculs d'EV peuvent être complexes au début
+- Nécessite de lire les conditions générales en entier
+- Certaines offres attractives ont des pièges cachés
+- Les meilleurs jeux (haut RTP) sont parfois exclus
+:::end:::
+
 ## L'erreur fatale à éviter absolument
 
 **Ne dépassez JAMAIS la mise maximale.** C'est la raison n°1 pour laquelle les joueurs perdent leurs gains de bonus. Même un dépassement accidentel de quelques centimes peut entraîner l'annulation totale du bonus et de vos gains. Certains casinos appliquent cette règle de manière très stricte, sans avertissement préalable.
@@ -397,6 +448,8 @@ En appliquant ces stratégies de manière disciplinée, vous maximisez significa
     excerpt: 'Notre classement détaillé des meilleurs bonus casino sans dépôt en 2026, basé sur notre score propriétaire. Analyse complète de chaque offre avec forces et faiblesses.',
     category: 'comparatifs',
     content: `
+:::image hero-ranking:::
+
 ## Notre méthodologie de classement
 
 Chez CasinoJeuGratuit, nous ne classons pas les bonus au hasard. Notre score propriétaire de 0 à 100 est calculé à partir de **7 critères pondérés**, analysés objectivement pour chaque offre. Cette transparence est au coeur de notre approche — nous voulons que vous compreniez exactement pourquoi une offre est mieux classée qu'une autre.
@@ -503,6 +556,21 @@ Cresus Casino propose une offre solide de **20 free spins exclusifs** sur des je
 | Casino Extra | 15€ cash | x20 | 75€ | 6.50€ | 21j | 88 |
 | Cresus | 20 FS | x30 | 100€ | 4.20€ | 7j | 85 |
 
+:::proscons Réclamer un bonus du classement:::
+pros:
+- Offres vérifiées et mises à jour mensuellement
+- Score transparent basé sur 7 critères objectifs
+- Codes promo exclusifs pour de meilleures conditions
+- Offres sans wagering en tête de classement
+- Disponibles dans les principaux pays francophones
+cons:
+- Les meilleures offres sont parfois limitées géographiquement
+- Les conditions peuvent changer sans préavis
+- Les offres exclusives nécessitent un code spécifique
+- Le gain maximum reste plafonné (25€ à 200€)
+- Certaines offres expirent rapidement (7 jours)
+:::end:::
+
 ## Tendances du marché en 2026
 
 L'année 2026 marque plusieurs évolutions importantes dans le monde des bonus sans dépôt :
@@ -543,6 +611,8 @@ Ce classement est mis à jour mensuellement. Nous vérifions chaque offre pour n
     excerpt: 'Comprendre les conditions de mise (wagering) des bonus casino : calcul détaillé, impact réel sur vos gains, échelle de qualité, et comment évaluer une offre.',
     category: 'avertissements',
     content: `
+:::image hero-wagering:::
+
 ## Qu'est-ce que le wagering ?
 
 Le **wagering**, également appelé **conditions de mise** ou **playthrough**, est le nombre de fois que vous devez miser le montant d'un bonus avant de pouvoir retirer vos gains. C'est le mécanisme principal utilisé par les casinos pour encadrer leurs offres promotionnelles.
@@ -620,6 +690,21 @@ Tous les jeux ne contribuent pas de la même manière au wagering. C'est un aspe
 
 **Conséquence pratique** : si vous jouez à la roulette (contribution 10%) avec un wagering x30 sur un bonus de 10€, vous devrez miser 300€ / 10% = **3000€** au lieu de 300€. C'est 10 fois plus ! Privilégiez toujours les slots pour le wagering.
 
+:::proscons Bonus avec wagering:::
+pros:
+- Permet de jouer gratuitement et de découvrir le casino
+- Certains wagering sont très raisonnables (x20 ou moins)
+- Possibilité de gagner de l'argent réel si conditions remplies
+- Le wagering protège aussi le joueur (limite les pertes)
+- De plus en plus d'offres sans wagering apparaissent
+cons:
+- Un wagering élevé (x40+) rend le bonus quasi impossible à convertir
+- La mise maximale peut annuler le bonus si dépassée
+- Certains casinos calculent sur bonus + gains (beaucoup plus dur)
+- Les jeux de table contribuent très peu (10-20%)
+- L'expiration peut vous faire perdre tous vos gains
+:::end:::
+
 ## Les pièges courants liés au wagering
 
 ### Piège 1 : La mise maximale
@@ -674,6 +759,8 @@ En suivant cette méthode, vous pouvez évaluer n'importe quel bonus en moins de
     excerpt: 'Comparaison détaillée entre les free spins et les bonus cash sans dépôt. Analyse des avantages, inconvénients, et guide pour choisir selon votre profil de joueur.',
     category: 'comparatifs',
     content: `
+:::image hero-compare:::
+
 ## Deux types de bonus, deux approches différentes
 
 Lorsque vous cherchez un bonus sans dépôt, vous tombez invariablement sur deux types d'offres : les **free spins** (tours gratuits) et les **bonus cash** (argent gratuit). Bien que les deux vous permettent de jouer sans risque, ils fonctionnent de manière très différente et conviennent à des profils de joueurs distincts.
@@ -755,6 +842,21 @@ Le bonus cash est une somme d'argent créditée directement sur votre compte jou
 | Risque de tout perdre vite | Élevé | Contrôlable | Bonus Cash |
 
 **Score global** : Free Spins 3 — Bonus Cash 4. Le bonus cash l'emporte légèrement grâce à son contrôle supérieur et sa meilleure valeur réelle moyenne.
+
+:::proscons Free Spins vs Bonus Cash:::
+pros:
+- Free spins : plus faciles à trouver, mécanisme simple
+- Free spins : potentiel de gros gain sur slots volatiles
+- Bonus cash : liberté totale dans le choix des jeux
+- Bonus cash : meilleur contrôle de la bankroll
+- Les deux : aucun risque financier pour le joueur
+cons:
+- Free spins : aucun contrôle sur le jeu ni la mise
+- Free spins : gains très dépendants de la volatilité
+- Bonus cash : plus rare sur le marché
+- Bonus cash : wagering parfois plus élevé
+- Les deux : gains toujours plafonnés
+:::end:::
 
 ## Quel type choisir selon votre profil ?
 
