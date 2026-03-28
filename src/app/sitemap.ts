@@ -5,14 +5,27 @@ import { blogPosts } from '@/data/blog';
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = 'https://casinojeugratuit.com';
 
+  // Use the most recent bonus/blog date for listing pages instead of new Date()
+  const latestBonusDate = bonuses.reduce((latest, b) => {
+    const d = new Date(b.lastUpdated);
+    return d > latest ? d : latest;
+  }, new Date(0));
+
+  const latestBlogDate = blogPosts.reduce((latest, p) => {
+    const d = new Date(p.date);
+    return d > latest ? d : latest;
+  }, new Date(0));
+
+  const latestOverall = latestBonusDate > latestBlogDate ? latestBonusDate : latestBlogDate;
+
   const staticPages = [
-    { url: base, lastModified: new Date(), changeFrequency: 'daily' as const, priority: 1 },
-    { url: `${base}/bonus-sans-depot`, lastModified: new Date(), changeFrequency: 'daily' as const, priority: 0.9 },
-    { url: `${base}/free-spins-sans-depot`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.8 },
-    { url: `${base}/bonus-sans-depot-sans-wagering`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.8 },
-    { url: `${base}/bonus-casino-gratuit`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.8 },
-    { url: `${base}/code-promo-casino`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.8 },
-    { url: `${base}/blog`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.7 },
+    { url: base, lastModified: latestOverall, changeFrequency: 'daily' as const, priority: 1 },
+    { url: `${base}/bonus-sans-depot`, lastModified: latestBonusDate, changeFrequency: 'daily' as const, priority: 0.9 },
+    { url: `${base}/free-spins-sans-depot`, lastModified: latestBonusDate, changeFrequency: 'weekly' as const, priority: 0.8 },
+    { url: `${base}/bonus-sans-depot-sans-wagering`, lastModified: latestBonusDate, changeFrequency: 'weekly' as const, priority: 0.8 },
+    { url: `${base}/bonus-casino-gratuit`, lastModified: latestBonusDate, changeFrequency: 'weekly' as const, priority: 0.8 },
+    { url: `${base}/code-promo-casino`, lastModified: latestBonusDate, changeFrequency: 'weekly' as const, priority: 0.8 },
+    { url: `${base}/blog`, lastModified: latestBlogDate, changeFrequency: 'weekly' as const, priority: 0.7 },
   ];
 
   const bonusPages = bonuses.map(b => ({

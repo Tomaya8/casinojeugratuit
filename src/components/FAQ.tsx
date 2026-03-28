@@ -20,20 +20,26 @@ export default function FAQ({ items }: { items?: FAQItem[] }) {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section className="py-12">
-      <h2 className="text-2xl font-bold text-gray-900 mb-6">Questions fréquentes</h2>
-      <div className="space-y-2">
+    <section className="py-12" aria-labelledby="faq-heading">
+      <h2 id="faq-heading" className="text-2xl font-bold text-gray-900 mb-6">Questions fréquentes</h2>
+      <div className="space-y-2" role="list">
         {faq.map((item, i) => (
-          <div key={i} className="border border-orange-100 rounded-xl overflow-hidden bg-white">
+          <div key={i} className="border border-orange-100 rounded-xl overflow-hidden bg-white" role="listitem">
             <button
               onClick={() => setOpen(open === i ? null : i)}
-              className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-orange-50/50 transition-colors"
+              className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-orange-50/50 transition-colors min-h-[48px]"
+              aria-expanded={open === i}
+              aria-controls={`faq-answer-${i}`}
             >
               <span className="font-medium text-gray-900 pr-4">{item.q}</span>
-              <span className={`text-orange-300 flex-shrink-0 transition-transform text-sm ${open === i ? 'rotate-180' : ''}`}>▼</span>
+              <svg className={`w-4 h-4 text-orange-400 flex-shrink-0 transition-transform ${open === i ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
             </button>
             {open === i && (
-              <div className="px-5 pb-4 text-sm text-gray-600 leading-relaxed">{item.a}</div>
+              <div id={`faq-answer-${i}`} className="px-5 pb-4 text-sm text-gray-600 leading-relaxed" role="region" aria-labelledby={`faq-q-${i}`}>
+                {item.a}
+              </div>
             )}
           </div>
         ))}

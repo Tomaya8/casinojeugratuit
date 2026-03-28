@@ -1,5 +1,3 @@
-'use client';
-
 export default function CasinoBg() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">

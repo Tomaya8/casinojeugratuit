@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { blogPosts, getPostBySlug } from '@/data/blog';
 import { formatDate } from '@/lib/utils';
 import NewsletterInline from '@/components/NewsletterInline';
+import FAQ from '@/components/FAQ';
 
 export async function generateStaticParams() {
   return blogPosts.map(p => ({ slug: p.slug }));
@@ -26,8 +27,25 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   const related = blogPosts.filter(p => p.slug !== post.slug && p.category === post.category).slice(0, 3);
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    author: {
+      '@type': 'Organization',
+      name: 'CasinoJeuGratuit',
+      url: 'https://casinojeugratuit.com',
+    },
+  };
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <nav className="text-sm text-gray-500 mb-6">
         <Link href="/" className="hover:text-orange-600">Accueil</Link>
         <span className="mx-2">/</span>
@@ -39,7 +57,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <article>
         <header className="mb-8">
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">{post.title}</h1>
-          <div className="flex items-center gap-3 text-sm text-gray-500">
+          <p className="text-gray-500 text-lg mb-4">{post.excerpt}</p>
+          <div className="flex items-center gap-3 text-sm text-gray-400">
             <span>{formatDate(post.date)}</span>
             <span>•</span>
             <span>{post.readTime} min de lecture</span>
@@ -47,20 +66,29 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </header>
 
         <div
-          className="prose max-w-none
+          className="
+            prose max-w-none
             prose-headings:text-gray-900 prose-headings:font-bold
-            prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4
-            prose-h3:text-xl prose-h3:mt-6 prose-h3:mb-3
-            prose-p:text-gray-500 prose-p:leading-relaxed
+            prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
+            prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
+            prose-p:text-gray-600 prose-p:leading-relaxed prose-p:mb-4
             prose-strong:text-gray-900
-            prose-li:text-gray-500
-            prose-table:text-sm
-            prose-th:text-gray-700 prose-th:border-orange-100 prose-th:py-2 prose-th:px-3
+            prose-li:text-gray-600
+            prose-ul:my-4 prose-ol:my-4
+            prose-table:text-sm prose-table:my-6
+            prose-th:text-gray-700 prose-th:bg-orange-50/50 prose-th:border-orange-100 prose-th:py-2.5 prose-th:px-3 prose-th:text-left prose-th:font-semibold
             prose-td:border-orange-100 prose-td:py-2 prose-td:px-3
+            prose-tr:border-b prose-tr:border-orange-50
+            prose-a:text-orange-600 prose-a:no-underline hover:prose-a:underline
           "
           dangerouslySetInnerHTML={{ __html: markdownToHtml(post.content) }}
         />
       </article>
+
+      {/* Article FAQ */}
+      {post.faq && post.faq.length > 0 && (
+        <FAQ items={post.faq} />
+      )}
 
       <div className="mt-12">
         <NewsletterInline />
@@ -94,24 +122,114 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 }
 
 function markdownToHtml(md: string): string {
-  return md
-    .replace(/^### (.*$)/gm, '<h3>$1</h3>')
-    .replace(/^## (.*$)/gm, '<h2>$1</h2>')
-    .replace(/^# (.*$)/gm, '<h1>$1</h1>')
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-    .replace(/^\- (.*$)/gm, '<li>$1</li>')
-    .replace(/^(\d+)\. (.*$)/gm, '<li>$2</li>')
-    .replace(/(<li>.*<\/li>\n?)+/g, (match) => {
-      return `<ul>${match}</ul>`;
-    })
-    .replace(/\|(.*)\|/g, (match) => {
-      const cells = match.split('|').filter(c => c.trim());
-      if (cells.every(c => /^[\s-]+$/.test(c))) return '';
-      const tag = 'td';
-      return `<tr>${cells.map(c => `<${tag}>${c.trim()}</${tag}>`).join('')}</tr>`;
-    })
-    .replace(/(<tr>.*<\/tr>\n?)+/g, (match) => `<table><tbody>${match}</tbody></table>`)
-    .replace(/^(?!<[hultro])(.*\S.*)$/gm, '<p>$1</p>')
-    .replace(/<p><\/p>/g, '')
-    .replace(/\n{2,}/g, '\n');
+  const lines = md.trim().split('\n');
+  const output: string[] = [];
+  let inList = false;
+  let inTable = false;
+  let tableHeader = '';
+  let tableSep = '';
+  let tableRows: string[] = [];
+
+  function flushTable() {
+    if (!tableHeader) return;
+    const headerCells = tableHeader.split('|').filter(c => c.trim()).map(c => `<th>${applyInline(c.trim())}</th>`).join('');
+    const rows = tableRows.map(row => {
+      const cells = row.split('|').filter(c => c.trim()).map(c => `<td>${applyInline(c.trim())}</td>`).join('');
+      return `<tr>${cells}</tr>`;
+    }).join('');
+    output.push(`<div class="overflow-x-auto"><table><thead><tr>${headerCells}</tr></thead><tbody>${rows}</tbody></table></div>`);
+    tableHeader = '';
+    tableSep = '';
+    tableRows = [];
+    inTable = false;
+  }
+
+  function closeList() {
+    if (inList) {
+      output.push('</ul>');
+      inList = false;
+    }
+  }
+
+  function applyInline(text: string): string {
+    return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+  }
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const trimmed = line.trim();
+
+    // Table detection: a pipe line followed by a separator line
+    if (!inTable && trimmed.startsWith('|') && trimmed.endsWith('|')) {
+      const nextLine = i + 1 < lines.length ? lines[i + 1].trim() : '';
+      if (/^\|[-| :]+\|$/.test(nextLine)) {
+        closeList();
+        inTable = true;
+        tableHeader = trimmed;
+        tableSep = nextLine;
+        i++; // skip separator
+        continue;
+      }
+    }
+
+    // Table body rows
+    if (inTable) {
+      if (trimmed.startsWith('|') && trimmed.endsWith('|')) {
+        tableRows.push(trimmed);
+        continue;
+      } else {
+        flushTable();
+        // fall through to process current line normally
+      }
+    }
+
+    // Empty line
+    if (trimmed === '') {
+      closeList();
+      continue;
+    }
+
+    // Headers
+    if (trimmed.startsWith('### ')) {
+      closeList();
+      output.push(`<h3>${applyInline(trimmed.slice(4))}</h3>`);
+      continue;
+    }
+    if (trimmed.startsWith('## ')) {
+      closeList();
+      output.push(`<h2>${applyInline(trimmed.slice(3))}</h2>`);
+      continue;
+    }
+
+    // Unordered list items
+    if (trimmed.startsWith('- ')) {
+      if (!inList) {
+        output.push('<ul>');
+        inList = true;
+      }
+      output.push(`<li>${applyInline(trimmed.slice(2))}</li>`);
+      continue;
+    }
+
+    // Ordered list items (render as ul to match original behavior)
+    const olMatch = trimmed.match(/^\d+\.\s+(.*)/);
+    if (olMatch) {
+      if (!inList) {
+        output.push('<ul>');
+        inList = true;
+      }
+      output.push(`<li>${applyInline(olMatch[1])}</li>`);
+      continue;
+    }
+
+    // Paragraph
+    closeList();
+    output.push(`<p>${applyInline(trimmed)}</p>`);
+  }
+
+  // Flush remaining state
+  closeList();
+  flushTable();
+
+  return output.join('\n');
 }

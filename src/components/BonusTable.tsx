@@ -64,7 +64,7 @@ export default function BonusTable({ bonuses, title }: { bonuses: Bonus[]; title
           <button
             key={f.key}
             onClick={() => setFilter(f.key)}
-            className={`px-3 py-1.5 text-sm rounded-lg border transition-colors ${
+            className={`px-4 py-2 text-sm rounded-lg border transition-colors ${
               filter === f.key
                 ? 'bg-orange-100 border-orange-300 text-orange-700 font-semibold'
                 : 'bg-white border-orange-100 text-gray-500 hover:text-gray-900 hover:border-orange-200'
@@ -92,16 +92,16 @@ export default function BonusTable({ bonuses, title }: { bonuses: Bonus[]; title
           <thead>
             <tr className="bg-orange-50/50 text-gray-500">
               <th className="text-left px-4 py-3 font-medium">Casino / Offre</th>
-              <th className="px-3 py-3 font-medium cursor-pointer hover:text-gray-900" onClick={() => handleSort('score')}>
+              <th className="px-3 py-3 font-medium cursor-pointer hover:text-gray-900" onClick={() => handleSort('score')} onKeyDown={e => e.key === 'Enter' && handleSort('score')} tabIndex={0} role="button" aria-label="Trier par score">
                 Score <SortIcon col="score" />
               </th>
-              <th className="px-3 py-3 font-medium cursor-pointer hover:text-gray-900" onClick={() => handleSort('wagering')}>
+              <th className="px-3 py-3 font-medium cursor-pointer hover:text-gray-900" onClick={() => handleSort('wagering')} onKeyDown={e => e.key === 'Enter' && handleSort('wagering')} tabIndex={0} role="button" aria-label="Trier par wagering">
                 Wagering <SortIcon col="wagering" />
               </th>
-              <th className="px-3 py-3 font-medium cursor-pointer hover:text-gray-900" onClick={() => handleSort('estimatedValue')}>
+              <th className="px-3 py-3 font-medium cursor-pointer hover:text-gray-900" onClick={() => handleSort('estimatedValue')} onKeyDown={e => e.key === 'Enter' && handleSort('estimatedValue')} tabIndex={0} role="button" aria-label="Trier par valeur réelle">
                 Valeur réelle <SortIcon col="estimatedValue" />
               </th>
-              <th className="px-3 py-3 font-medium cursor-pointer hover:text-gray-900" onClick={() => handleSort('maxWin')}>
+              <th className="px-3 py-3 font-medium cursor-pointer hover:text-gray-900" onClick={() => handleSort('maxWin')} onKeyDown={e => e.key === 'Enter' && handleSort('maxWin')} tabIndex={0} role="button" aria-label="Trier par gain maximum">
                 Gain max <SortIcon col="maxWin" />
               </th>
               <th className="px-3 py-3 font-medium">Pays</th>

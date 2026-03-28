@@ -28,8 +28,25 @@ export default async function BonusDetailPage({ params }: { params: Promise<{ sl
 
   const related = bonuses.filter(b => b.id !== bonus.id && b.type === bonus.type).slice(0, 3);
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: `${bonus.title} — ${bonus.casinoName}`,
+    description: bonus.description,
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: bonus.currency,
+      availability: 'https://schema.org/InStock',
+    },
+  };
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Breadcrumb */}
       <nav className="text-sm text-gray-400 mb-6">
         <Link href="/" className="hover:text-orange-600">Accueil</Link>
